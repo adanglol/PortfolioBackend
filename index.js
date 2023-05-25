@@ -5,6 +5,7 @@
 
 
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const sgMail = require('@sendgrid/mail');
 const cors = require('cors');
@@ -45,14 +46,14 @@ app.post('/send-email', (req, res) => {
 });
 
 // serve frontend build or static files
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // handle all other routes
 
 // Default route
 // * means all routes
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
