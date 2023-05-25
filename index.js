@@ -23,7 +23,13 @@ app.use(express.json());
 // enable CORS
 app.use(cors());
 
+// GET API ENDPOINT
+app.get('/send-email',(req,res) => {
+  console.log('GET request to /send-email')
+  res.status(200).json({message: 'Send email GET endpoint'})
+});
 
+// POST API ENDPOINT
 app.post('/send-email', (req, res) => {
   console.log('email has been sent')
   const { to, subject, text } = req.body;
@@ -50,6 +56,8 @@ app.post('/send-email', (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // handle all other routes
+
+
 
 // Default route
 // * means all routes
