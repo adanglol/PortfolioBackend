@@ -29,6 +29,11 @@ app.get('/send-email',(req,res) => {
   res.status(200).json({message: 'Send email GET endpoint'})
 });
 
+app.get('/test',(req,res) => {
+  console.log('GET request to /test')
+  res.status(200).json({message: 'Test GET endpoint'})
+});
+
 // POST API ENDPOINT
 app.post('/send-email', (req, res) => {
   console.log('email has been sent')
