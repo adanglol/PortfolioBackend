@@ -1,8 +1,13 @@
+// TO DO 
+
+// CONFIGURE ENV IN AZURE AND GITHUB SECRETS FOR API ENDPOINT TO CONTANCT FORM
+
+
+
 require('dotenv').config();
 const express = require('express');
 const sgMail = require('@sendgrid/mail');
 const cors = require('cors');
-
 
 const app = express();
 const port = 4000; // Choose a port for your server
@@ -43,7 +48,10 @@ app.post('/send-email', (req, res) => {
 app.use(express.static('public'));
 
 // handle all other routes
-app.get('*', (req, res) => {
+
+// Default route
+// * means all routes
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
