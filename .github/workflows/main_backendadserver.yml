@@ -41,7 +41,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     env:
-      SENDGRID_API_KEY: ${{ secrets.REACT_APP_SENDGRID_API_KEY }}
+      REACT_APP_SENDGRID_API_KEY: ${{ secrets.REACT_APP_SENDGRID_API_KEY }}
 
     steps:
       - name: Download artifact from build job
