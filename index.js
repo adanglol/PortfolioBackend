@@ -1,10 +1,3 @@
-// TO DO 
-
-// CONFIGURE ENV IN AZURE AND GITHUB SECRETS FOR API ENDPOINT TO CONTANCT FORM
-// HERE GOES THE CODE FOR THE SERVER
-// TIME TO COOK! LET THE MAN COOK
-
-
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -12,31 +5,28 @@ const sgMail = require('@sendgrid/mail');
 const cors = require('cors');
 
 const app = express();
-const port = 4000; // Choose a port for your server
+const port = process.env.PORT || 4000; // Use the dynamically assigned port from Azure or fallback to 4000
 
-const apiKey = process.env.REACT_APP_SENDGRID_API_KEY; // Replace with your SendGrid API key
+const apiKey = process.env.REACT_APP_SENDGRID_API_KEY; 
 sgMail.setApiKey(apiKey);
-// console.log(apiKey);
 
 app.use(express.json());
 
-// enable CORS
+// Enable CORS
 app.use(cors());
 
-// GET API ENDPOINT
-app.get('/send-email',(req,res) => {
-  console.log('GET request to /send-email')
-  res.status(200).json({message: 'Send email GET endpoint'})
+app.get('/send-email', (req, res) => {
+  console.log('GET request to /send-email');
+  res.status(200).json({ message: 'Send email GET endpoint' });
 });
 
-app.get('/test',(req,res) => {
-  console.log('GET request to /test')
-  res.status(200).json({message: 'Test GET endpoint'})
+app.get('/test', (req, res) => {
+  console.log('GET request to /test');
+  res.status(200).json({ message: 'Test GET endpoint' });
 });
 
-// POST API ENDPOINT
 app.post('/send-email', (req, res) => {
-  console.log('email has been sent')
+  console.log('Email has been sent');
   const { to, subject, text } = req.body;
 
   const msg = {
@@ -57,15 +47,8 @@ app.post('/send-email', (req, res) => {
     });
 });
 
-// serve frontend build or static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// handle all other routes
-
-
-
-// Default route
-// * means all routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
