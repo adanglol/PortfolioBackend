@@ -50,10 +50,10 @@ app.post('/send-email', (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
+  console.log('GET request to /');
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(port,'0.0.0.0.', () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
-
