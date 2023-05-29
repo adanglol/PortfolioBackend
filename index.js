@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Enable CORS
 app.use(cors());
-
+// a sdfdsfd
 app.get('/send-email', (req, res) => {
   console.log('GET request to /send-email');
   res.status(200).json({ message: 'Send email GET endpoint' });
