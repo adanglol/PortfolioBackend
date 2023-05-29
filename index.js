@@ -56,4 +56,9 @@ app.get('/', (req, res) => {
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
+  console.log(`http://localhost:${port}`);
+  console.log('SendEmail : ',`http://localhost:${port}/send-email`);
+  console.log('Test : ',`http://localhost:${port}/test`);
+
+
 });
